@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="30" passed="30" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-05-26T16:37:14 IST" name="Surefire suite" finished-at="2024-05-26T16:37:16 IST" duration-ms="2040">
+    <groups>
+    </groups>
+    <test started-at="2024-05-26T16:37:14 IST" name="Surefire test" finished-at="2024-05-26T16:37:16 IST" duration-ms="2040">
+      <class name="CommentControllerTest">
+        <test-method signature="testGetUsersWhoLikedComment()" started-at="2024-05-26T16:37:16 IST" name="testGetUsersWhoLikedComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="190" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoLikedComment -->
+        <test-method signature="testGetUsersWhoDislikedComment()" started-at="2024-05-26T16:37:16 IST" name="testGetUsersWhoDislikedComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="197" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoDislikedComment -->
+        <test-method signature="testGetComments()" started-at="2024-05-26T16:37:16 IST" name="testGetComments" finished-at="2024-05-26T16:37:16 IST" duration-ms="194" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetComments -->
+        <test-method signature="testAddComment()" started-at="2024-05-26T16:37:16 IST" name="testAddComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="201" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddComment -->
+        <test-method signature="testUpdateComment_NotFound()" started-at="2024-05-26T16:37:16 IST" name="testUpdateComment_NotFound" finished-at="2024-05-26T16:37:16 IST" duration-ms="193" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateComment_NotFound -->
+        <test-method signature="testUpdateComment()" started-at="2024-05-26T16:37:16 IST" name="testUpdateComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="195" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateComment -->
+        <test-method signature="testGetReplies()" started-at="2024-05-26T16:37:16 IST" name="testGetReplies" finished-at="2024-05-26T16:37:16 IST" duration-ms="198" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetReplies -->
+        <test-method signature="testLikeComment()" started-at="2024-05-26T16:37:16 IST" name="testLikeComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="199" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLikeComment -->
+        <test-method signature="testDislikeComment()" started-at="2024-05-26T16:37:16 IST" name="testDislikeComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="192" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDislikeComment -->
+      </class> <!-- CommentControllerTest -->
+      <class name="CommentServiceTest">
+        <test-method signature="testGetUsersWhoLikedCommentWhenThereIsNoEntryInLikeDislike()" started-at="2024-05-26T16:37:14 IST" name="testGetUsersWhoLikedCommentWhenThereIsNoEntryInLikeDislike" finished-at="2024-05-26T16:37:16 IST" duration-ms="1552" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoLikedCommentWhenThereIsNoEntryInLikeDislike -->
+        <test-method signature="testLikeCommentNotFoundException()" started-at="2024-05-26T16:37:14 IST" name="testLikeCommentNotFoundException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1555" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLikeCommentNotFoundException -->
+        <test-method signature="testDislikeComment()" started-at="2024-05-26T16:37:14 IST" name="testDislikeComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="1569" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDislikeComment -->
+        <test-method signature="testGetUsersWhoLikedComment()" started-at="2024-05-26T16:37:14 IST" name="testGetUsersWhoLikedComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="1564" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoLikedComment -->
+        <test-method signature="testGetUsersWhoDislikedCommentNotFoundException()" started-at="2024-05-26T16:37:14 IST" name="testGetUsersWhoDislikedCommentNotFoundException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1558" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoDislikedCommentNotFoundException -->
+        <test-method signature="testGetCommentsException()" started-at="2024-05-26T16:37:14 IST" name="testGetCommentsException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1576" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetCommentsException -->
+        <test-method signature="testGetUsersWhoLikedCommentException()" started-at="2024-05-26T16:37:14 IST" name="testGetUsersWhoLikedCommentException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1577" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoLikedCommentException -->
+        <test-method signature="testDislikeCommentNotFoundException()" started-at="2024-05-26T16:37:14 IST" name="testDislikeCommentNotFoundException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1582" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDislikeCommentNotFoundException -->
+        <test-method signature="testLikeCommentException()" started-at="2024-05-26T16:37:14 IST" name="testLikeCommentException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1580" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLikeCommentException -->
+        <test-method signature="testGetUsersWhoLikedCommentNotException()" started-at="2024-05-26T16:37:14 IST" name="testGetUsersWhoLikedCommentNotException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1585" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoLikedCommentNotException -->
+        <test-method signature="testAddCommentException()" started-at="2024-05-26T16:37:14 IST" name="testAddCommentException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1592" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddCommentException -->
+        <test-method signature="testGetRepliesException()" started-at="2024-05-26T16:37:14 IST" name="testGetRepliesException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1586" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetRepliesException -->
+        <test-method signature="testGetUsersWhoDislikedCommentException()" started-at="2024-05-26T16:37:14 IST" name="testGetUsersWhoDislikedCommentException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1585" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoDislikedCommentException -->
+        <test-method signature="testUpdateCommentNotFound()" started-at="2024-05-26T16:37:14 IST" name="testUpdateCommentNotFound" finished-at="2024-05-26T16:37:16 IST" duration-ms="1589" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateCommentNotFound -->
+        <test-method signature="testGetReplies()" started-at="2024-05-26T16:37:14 IST" name="testGetReplies" finished-at="2024-05-26T16:37:16 IST" duration-ms="1609" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetReplies -->
+        <test-method signature="testGetUsersWhoDislikedComment()" started-at="2024-05-26T16:37:14 IST" name="testGetUsersWhoDislikedComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="1606" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUsersWhoDislikedComment -->
+        <test-method signature="testAddComment()" started-at="2024-05-26T16:37:14 IST" name="testAddComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="1616" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddComment -->
+        <test-method signature="testUpdateComment()" started-at="2024-05-26T16:37:14 IST" name="testUpdateComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="1603" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateComment -->
+        <test-method signature="testGetComments()" started-at="2024-05-26T16:37:14 IST" name="testGetComments" finished-at="2024-05-26T16:37:16 IST" duration-ms="1597" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetComments -->
+        <test-method signature="testDislikeCommentException()" started-at="2024-05-26T16:37:14 IST" name="testDislikeCommentException" finished-at="2024-05-26T16:37:16 IST" duration-ms="1592" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDislikeCommentException -->
+        <test-method signature="testLikeComment()" started-at="2024-05-26T16:37:14 IST" name="testLikeComment" finished-at="2024-05-26T16:37:16 IST" duration-ms="1612" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLikeComment -->
+      </class> <!-- CommentServiceTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

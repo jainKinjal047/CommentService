@@ -1,0 +1,16 @@
+com/example/commentservice/entity/Comments.class
+com/example/commentservice/request/UpdateCommentRequest.class
+com/example/commentservice/configuration/WebConfig.class
+com/example/commentservice/request/LikeDislikeRequest.class
+com/example/commentservice/configuration/WebConfig$PageableHandlerMethodArgumentResolver.class
+com/example/commentservice/repository/LikeDislikeRepository.class
+com/example/commentservice/exception/CommentNotFoundException.class
+com/example/commentservice/repository/CommentRepository.class
+com/example/commentservice/request/CommentRequest.class
+com/example/commentservice/CommentServiceApplication.class
+com/example/commentservice/service/CommentService.class
+com/example/commentservice/exception/GlobalExceptionHandler.class
+com/example/commentservice/controller/CommentController.class
+com/example/commentservice/constant/GlobalConstants.class
+com/example/commentservice/entity/LikeDislike.class
+com/example/commentservice/exception/CommentServiceException.class

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CommentSystem</a> &gt; <a href="index.source.html" class="el_package">com.example.commentservice.service</a> &gt; <span class="el_source">CommentService.java</span></div><h1>CommentService.java</h1><pre class="source lang-java linenums">package com.example.commentservice.service;
+
+import com.example.commentservice.constant.GlobalConstants;
+import com.example.commentservice.entity.Comments;
+import com.example.commentservice.entity.LikeDislike;
+import com.example.commentservice.exception.CommentNotFoundException;
+import com.example.commentservice.exception.CommentServiceException;
+import com.example.commentservice.repository.CommentRepository;
+import com.example.commentservice.repository.LikeDislikeRepository;
+import com.example.commentservice.request.CommentRequest;
+import com.example.commentservice.request.LikeDislikeRequest;
+import com.example.commentservice.request.UpdateCommentRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+<span class="fc" id="L24">public class CommentService {</span>
+
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private LikeDislikeRepository likeDislikeRepository;
+
+    public Comments addComment(CommentRequest commentRequest) {
+        try {
+<span class="fc" id="L34">            Comments comment = new Comments();</span>
+<span class="fc" id="L35">            comment.setPostId(commentRequest.getPostId());</span>
+<span class="fc" id="L36">            comment.setUserId(commentRequest.getUserId());</span>
+<span class="fc" id="L37">            comment.setContent(commentRequest.getContent());</span>
+<span class="fc" id="L38">            comment.setCreatedAt(LocalDateTime.now());</span>
+<span class="fc" id="L39">            comment.setParentCommentId(commentRequest.getParentCommentId());</span>
+<span class="fc" id="L40">            return commentRepository.save(comment);</span>
+<span class="fc" id="L41">        } catch (Exception e) {</span>
+<span class="fc" id="L42">            throw new CommentServiceException(&quot;Failed to add comment&quot;, e);</span>
+        }
+    }
+
+    public void likeComment(LikeDislikeRequest likeDislikeRequest) {
+        try {
+<span class="fc" id="L48">            Optional&lt;Comments&gt; commentOptional = commentRepository.findById(likeDislikeRequest.getCommentId());</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">            if (commentOptional.isPresent()) {</span>
+<span class="fc" id="L50">                Comments comment = commentOptional.get();</span>
+<span class="fc" id="L51">                Optional&lt;LikeDislike&gt; optionalLikeDislike = likeDislikeRepository.findByCommentId(likeDislikeRequest.getCommentId());</span>
+
+<span class="pc" id="L53">                LikeDislike likeDislike = optionalLikeDislike.orElseGet(() -&gt; new LikeDislike(likeDislikeRequest.getCommentId(), new ArrayList&lt;&gt;(), new ArrayList&lt;&gt;()));</span>
+
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">                if (!likeDislike.getLikes().contains(likeDislikeRequest.getUserId())) {</span>
+<span class="fc" id="L56">                    likeDislike.getLikes().add(likeDislikeRequest.getUserId());</span>
+<span class="fc" id="L57">                    comment.setLikesCount(comment.getLikesCount() + 1);</span>
+                }
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">                if (likeDislike.getDislikes().contains(likeDislikeRequest.getUserId())) {</span>
+<span class="nc" id="L60">                    likeDislike.getDislikes().remove(likeDislikeRequest.getUserId());</span>
+<span class="nc" id="L61">                    comment.setDislikesCount(comment.getDislikesCount() - 1);</span>
+                }
+
+<span class="fc" id="L64">                likeDislikeRepository.save(likeDislike);</span>
+<span class="fc" id="L65">                commentRepository.save(comment);</span>
+<span class="fc" id="L66">            } else {</span>
+<span class="fc" id="L67">                throw new CommentNotFoundException(GlobalConstants.COMMENT_NOT_FOUND);</span>
+            }
+<span class="fc" id="L69">        } catch (CommentNotFoundException e) {</span>
+<span class="fc" id="L70">            throw e;</span>
+<span class="fc" id="L71">        } catch (Exception e) {</span>
+<span class="fc" id="L72">            throw new CommentServiceException(&quot;Failed to like comment&quot;, e);</span>
+<span class="fc" id="L73">        }</span>
+<span class="fc" id="L74">    }</span>
+
+    public void dislikeComment(LikeDislikeRequest likeDislikeRequest) {
+        try {
+<span class="fc" id="L78">            Optional&lt;Comments&gt; commentOptional = commentRepository.findById(likeDislikeRequest.getCommentId());</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">            if (commentOptional.isPresent()) {</span>
+<span class="fc" id="L80">                Comments comment = commentOptional.get();</span>
+<span class="fc" id="L81">                Optional&lt;LikeDislike&gt; optionalLikeDislike = likeDislikeRepository.findByCommentId(likeDislikeRequest.getCommentId());</span>
+
+<span class="pc" id="L83">                LikeDislike likeDislike = optionalLikeDislike.orElseGet(() -&gt; new LikeDislike(likeDislikeRequest.getCommentId(), new ArrayList&lt;&gt;(), new ArrayList&lt;&gt;()));</span>
+
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">                if (!likeDislike.getDislikes().contains(likeDislikeRequest.getUserId())) {</span>
+<span class="fc" id="L86">                    likeDislike.getDislikes().add(likeDislikeRequest.getUserId());</span>
+<span class="fc" id="L87">                    comment.setDislikesCount(comment.getDislikesCount() + 1);</span>
+                }
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">                if(likeDislike.getLikes().contains(likeDislikeRequest.getUserId())){</span>
+<span class="nc" id="L90">                    likeDislike.getLikes().remove(likeDislikeRequest.getUserId());</span>
+<span class="nc" id="L91">                    comment.setLikesCount(comment.getLikesCount()-1);</span>
+                }
+
+<span class="fc" id="L94">                likeDislikeRepository.save(likeDislike);</span>
+<span class="fc" id="L95">                commentRepository.save(comment);</span>
+<span class="fc" id="L96">            } else {</span>
+<span class="fc" id="L97">                throw new CommentNotFoundException(GlobalConstants.COMMENT_NOT_FOUND);</span>
+            }
+        }
+<span class="fc" id="L100">        catch (CommentNotFoundException e) {</span>
+<span class="fc" id="L101">            throw e;</span>
+<span class="fc" id="L102">        } catch (Exception e) {</span>
+<span class="fc" id="L103">            throw new CommentServiceException(&quot;Failed to dislike comment&quot;, e);</span>
+<span class="fc" id="L104">        }</span>
+<span class="fc" id="L105">    }</span>
+
+
+    public List&lt;Comments&gt; getComments(String postId, int page , int size) {
+<span class="fc" id="L109">        Pageable pageable = PageRequest.of(page, size);</span>
+        try {
+<span class="fc" id="L111">            return commentRepository.findByPostIdAndParentCommentIdIsNull(postId,pageable);</span>
+<span class="fc" id="L112">        } catch (Exception e) {</span>
+<span class="fc" id="L113">            throw new CommentServiceException(&quot;Failed to fetch comments&quot;, e);</span>
+        }
+    }
+
+    public List&lt;Comments&gt; getReplies(String parentCommentId , int page , int size) {
+<span class="fc" id="L118">        Pageable pageable = PageRequest.of(page, size);</span>
+        try {
+<span class="fc" id="L120">            return commentRepository.findByParentCommentId(parentCommentId, pageable);</span>
+<span class="fc" id="L121">        } catch (Exception e) {</span>
+<span class="fc" id="L122">            throw new CommentServiceException(&quot;Failed to fetch replies&quot;, e);</span>
+        }
+    }
+
+    public List&lt;String&gt; getUsersWhoLikedComment(String commentId) {
+        try {
+<span class="fc" id="L128">            Optional&lt;Comments&gt; commentOptional = commentRepository.findById(commentId);</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">            if (commentOptional.isPresent()) {</span>
+<span class="fc" id="L130">                return likeDislikeRepository.findByCommentId(commentId)</span>
+<span class="fc" id="L131">                        .map(LikeDislike::getLikes)</span>
+<span class="fc" id="L132">                        .orElse(new ArrayList&lt;&gt;());</span>
+            } else {
+<span class="fc" id="L134">                throw new CommentNotFoundException(GlobalConstants.COMMENT_NOT_FOUND);</span>
+            }
+        }
+<span class="fc" id="L137">        catch (CommentNotFoundException e) {</span>
+<span class="fc" id="L138">            throw e;</span>
+<span class="fc" id="L139">        }catch (Exception e) {</span>
+<span class="fc" id="L140">            throw new CommentServiceException(&quot;Failed to fetch users who liked the comment&quot;, e);</span>
+        }
+    }
+
+    public List&lt;String&gt; getUsersWhoDislikedComment(String commentId) {
+        try {
+<span class="fc" id="L146">            Optional&lt;Comments&gt; commentOptional = commentRepository.findById(commentId);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">            if (commentOptional.isPresent()) {</span>
+<span class="fc" id="L148">                return likeDislikeRepository.findByCommentId(commentId)</span>
+<span class="fc" id="L149">                        .map(LikeDislike::getDislikes)</span>
+<span class="fc" id="L150">                        .orElse(new ArrayList&lt;&gt;());</span>
+            } else {
+<span class="fc" id="L152">                throw new CommentNotFoundException(GlobalConstants.COMMENT_NOT_FOUND);</span>
+            }
+        }
+<span class="fc" id="L155">        catch (CommentNotFoundException e) {</span>
+<span class="fc" id="L156">            throw e;</span>
+<span class="fc" id="L157">        }catch (Exception e) {</span>
+<span class="fc" id="L158">            throw new CommentServiceException(&quot;Failed to fetch users who disliked the comment&quot;, e);</span>
+        }
+    }
+
+    public Optional&lt;Comments&gt; updateComment(UpdateCommentRequest commentRequest) {
+        try {
+<span class="fc" id="L164">            Optional&lt;Comments&gt; commentOptional = commentRepository.findByIdAndUserId(commentRequest.getCommentId(), commentRequest.getUserId());</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">            if (commentOptional.isPresent()) {</span>
+<span class="fc" id="L166">                Comments comment = commentOptional.get();</span>
+<span class="fc" id="L167">                comment.setContent(commentRequest.getNewContent());</span>
+<span class="fc" id="L168">                commentRepository.save(comment);</span>
+<span class="fc" id="L169">                return Optional.of(comment);</span>
+            } else {
+<span class="fc" id="L171">                throw new CommentNotFoundException(GlobalConstants.COMMENT_NOT_FOUND);</span>
+            }
+        }
+<span class="fc" id="L174">        catch (CommentNotFoundException e) {</span>
+<span class="fc" id="L175">            throw e;</span>
+<span class="nc" id="L176">        }catch (Exception e) {</span>
+<span class="nc" id="L177">            throw new CommentServiceException(&quot;Failed to update the comment&quot;, e);</span>
+        }
+    }
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

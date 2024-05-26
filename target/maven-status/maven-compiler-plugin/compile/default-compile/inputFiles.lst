@@ -1,0 +1,15 @@
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/exception/CommentNotFoundException.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/repository/LikeDislikeRepository.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/configuration/WebConfig.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/constant/GlobalConstants.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/repository/CommentRepository.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/CommentServiceApplication.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/exception/GlobalExceptionHandler.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/controller/CommentController.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/request/CommentRequest.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/service/CommentService.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/entity/LikeDislike.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/exception/CommentServiceException.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/entity/Comments.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/request/UpdateCommentRequest.java
+/Users/k0j09cl/Desktop/CommentSystem/src/main/java/com/example/commentservice/request/LikeDislikeRequest.java

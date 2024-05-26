@@ -1,0 +1,230 @@
+<html>
+<head>
+<title>TestNG:  Surefire test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Surefire test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>30/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sun May 26 16:37:14 IST 2024</td>
+</tr>
+<tr><td>Total time:</td><td>2 seconds (2040 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='CommentServiceTest.testAddCommentException()'><b>testAddCommentException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testAddCommentException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testGetUsersWhoDislikedComment()'><b>testGetUsersWhoDislikedComment</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testGetUsersWhoDislikedComment(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testGetUsersWhoLikedComment()'><b>testGetUsersWhoLikedComment</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testGetUsersWhoLikedComment(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetReplies()'><b>testGetReplies</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetReplies(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetCommentsException()'><b>testGetCommentsException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetCommentsException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetUsersWhoDislikedComment()'><b>testGetUsersWhoDislikedComment</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetUsersWhoDislikedComment(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testAddComment()'><b>testAddComment</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testAddComment(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testGetComments()'><b>testGetComments</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testGetComments(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetRepliesException()'><b>testGetRepliesException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetRepliesException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetUsersWhoLikedCommentException()'><b>testGetUsersWhoLikedCommentException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetUsersWhoLikedCommentException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testUpdateComment()'><b>testUpdateComment</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testUpdateComment(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testAddComment()'><b>testAddComment</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testAddComment(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetComments()'><b>testGetComments</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetComments(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetUsersWhoLikedCommentWhenThereIsNoEntryInLikeDislike()'><b>testGetUsersWhoLikedCommentWhenThereIsNoEntryInLikeDislike</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetUsersWhoLikedCommentWhenThereIsNoEntryInLikeDislike(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testDislikeComment()'><b>testDislikeComment</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testDislikeComment(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetUsersWhoLikedComment()'><b>testGetUsersWhoLikedComment</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetUsersWhoLikedComment(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetUsersWhoDislikedCommentNotFoundException()'><b>testGetUsersWhoDislikedCommentNotFoundException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetUsersWhoDislikedCommentNotFoundException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testLikeCommentNotFoundException()'><b>testLikeCommentNotFoundException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testLikeCommentNotFoundException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testUpdateComment_NotFound()'><b>testUpdateComment_NotFound</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testUpdateComment_NotFound(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testUpdateComment()'><b>testUpdateComment</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testUpdateComment(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetUsersWhoDislikedCommentException()'><b>testGetUsersWhoDislikedCommentException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetUsersWhoDislikedCommentException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testGetReplies()'><b>testGetReplies</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testGetReplies(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testDislikeCommentException()'><b>testDislikeCommentException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testDislikeCommentException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testDislikeCommentNotFoundException()'><b>testDislikeCommentNotFoundException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testDislikeCommentNotFoundException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testLikeCommentException()'><b>testLikeCommentException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testLikeCommentException(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testLikeComment()'><b>testLikeComment</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testLikeComment(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testUpdateCommentNotFound()'><b>testUpdateCommentNotFound</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testUpdateCommentNotFound(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testLikeComment()'><b>testLikeComment</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testLikeComment(CommentServiceTest)</td></tr>
+<tr>
+<td title='CommentControllerTest.testDislikeComment()'><b>testDislikeComment</b><br>Test class: CommentControllerTest</td>
+<td></td>
+<td>0</td>
+<td>testDislikeComment(CommentControllerTest)</td></tr>
+<tr>
+<td title='CommentServiceTest.testGetUsersWhoLikedCommentNotException()'><b>testGetUsersWhoLikedCommentNotException</b><br>Test class: CommentServiceTest</td>
+<td></td>
+<td>1</td>
+<td>testGetUsersWhoLikedCommentNotException(CommentServiceTest)</td></tr>
+</table><p>
+</body>
+</html>
