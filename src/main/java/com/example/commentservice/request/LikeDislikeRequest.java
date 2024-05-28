@@ -9,4 +9,6 @@ public class LikeDislikeRequest {
     String commentId;
     @NonNull
     String userId;
+
+    String reaction;
 }

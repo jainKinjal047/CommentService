@@ -3,8 +3,11 @@ package com.example.commentservice.service;
 import com.example.commentservice.constant.GlobalConstants;
 import com.example.commentservice.entity.Comments;
 import com.example.commentservice.entity.LikeDislike;
+import com.example.commentservice.enums.ReactionType;
 import com.example.commentservice.exception.CommentNotFoundException;
 import com.example.commentservice.exception.CommentServiceException;
+import com.example.commentservice.exception.ReactionNotFoundException;
+import com.example.commentservice.exception.UnauthorizedException;
 import com.example.commentservice.repository.CommentRepository;
 import com.example.commentservice.repository.LikeDislikeRepository;
 import com.example.commentservice.request.CommentRequest;
@@ -175,6 +178,45 @@ public class CommentService {
             throw e;
         }catch (Exception e) {
             throw new CommentServiceException("Failed to update the comment", e);
+        }
+    }
+
+    public void deleteComment(LikeDislikeRequest likeDislikeRequest) {
+        Optional<Comments> commentOptional = commentRepository.findById(likeDislikeRequest.getCommentId());
+        if (commentOptional.isPresent()) {
+            Comments comment = commentOptional.get();
+            if (comment.getUserId().equals(likeDislikeRequest.getUserId())) {
+                commentRepository.delete(comment);
+            } else {
+                throw new UnauthorizedException("User is not authorized to delete this comment");
+            }
+        } else {
+            throw new CommentNotFoundException("Comment not found");
+        }
+    }
+
+    public void removeReaction(LikeDislikeRequest likeDislikeRequest) {
+        Optional<Comments> commentOptional = commentRepository.findById(likeDislikeRequest.getCommentId());
+        if(commentOptional.isPresent()) {
+            Comments comment = commentOptional.get();
+            Optional<LikeDislike> likeDislikeOptional = likeDislikeRepository.findByCommentId(likeDislikeRequest.getCommentId());
+            if (likeDislikeOptional.isPresent()) {
+                LikeDislike likeDislike = likeDislikeOptional.get();
+                if (likeDislikeRequest.getReaction().equals(ReactionType.LIKE.getReaction()) && likeDislike.getLikes().contains(likeDislikeRequest.getUserId())) {
+                    likeDislike.getLikes().remove(likeDislikeRequest.getUserId());
+                    comment.setLikesCount(comment.getLikesCount()-1);
+                } else if(likeDislikeRequest.getReaction().equals(ReactionType.DISLIKE.getReaction()) && likeDislike.getDislikes().contains(likeDislikeRequest.getUserId())){
+                    likeDislike.getDislikes().remove(likeDislikeRequest.getUserId());
+                    comment.setDislikesCount(comment.getDislikesCount()-1);
+                }
+                likeDislikeRepository.save(likeDislike);
+                commentRepository.save(comment);
+            }
+            else {
+                    throw new ReactionNotFoundException("User has not reacted on this comment");
+                }
+        } else {
+            throw new CommentNotFoundException("Comment not found");
         }
     }
 }

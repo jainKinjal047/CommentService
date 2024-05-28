@@ -21,4 +21,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleGlobalException(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<?> handleUnauthorizedException(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(ReactionNotFoundException.class)
+    public ResponseEntity<?> handleReactionNotFoundException(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }
